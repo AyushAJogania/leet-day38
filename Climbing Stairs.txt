@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int climbStairs(int n) {
+        if (n <= 2) {
+            return n;
+        }
+        
+        int prev1 = 1; // Number of ways to reach the 1st step
+        int prev2 = 2; // Number of ways to reach the 2nd step
+        
+        for (int i = 3; i <= n; i++) {
+            int curr = prev1 + prev2; // Number of ways to reach the current step
+            prev1 = prev2;
+            prev2 = curr;
+        }
+        
+        return prev2; // Number of ways to reach the nth step
+    }
+};
